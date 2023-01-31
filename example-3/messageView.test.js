@@ -12,9 +12,12 @@ describe('MessageView', () => {
     const view = new MessageView();
 
     const buttonEl = document.querySelector('#show-message-button');
+    const inputEl = document.querySelector('#message-input');
+    inputEl.value = "JavaScript rules!"
     buttonEl.click();
 
     expect(document.querySelector('#message')).not.toBeNull();
+    expect(document.querySelector('#message').innerText).toEqual("JavaScript rules!");
   });
 
   it('clicks the button, then the hide button and nothing is displayed', () => {

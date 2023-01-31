@@ -15,7 +15,8 @@ class MessageView {
   displayMessage() {
     const divEl = document.createElement("div");
     divEl.id = "message";
-    divEl.innerText = "This message displayed by JavaScipt.";
+    let inputValue = document.querySelector("#message-input");
+    divEl.innerText = inputValue.value;
     document.querySelector('#main-container').append(divEl);
 
     console.log('Thanks for clicking me!');
