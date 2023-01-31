@@ -31,4 +31,21 @@ describe("NotesView", () => {
 
     expect(document.querySelector('.note').textContent).toEqual("Go to the gym");
   })
+
+  it("Should display the right number of notes when displayNotes is called twice", () => {
+    document.body.innerHTML = fs.readFileSync('./index.html');
+    const notesModel = new Model();
+    const view = new NotesView(notesModel);
+    const inputEl = document.querySelector('#notes-input');
+    inputEl.value = "Go to the gym";
+    const buttonEl = document.querySelector('#add-note-button');
+    buttonEl.click();
+
+    inputEl.value = "Eat ice cream";
+    buttonEl.click();
+    view.displayNotes();
+    view.displayNotes();
+
+    expect(document.querySelectorAll('.note').length).toEqual(2);
+  })
 })
